@@ -1,0 +1,43 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>jQuery intro</title>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+</head>
+<body>
+
+    <form id="inputform">
+        <input type="text" id="userinput" name="userinput">
+        <button id="button">Send</button>
+    </form>
+
+    <div id="output"></div>
+
+    <script>
+
+        function process () {
+            var input = $('#inputform').serialize();
+            input = input.replace("userinput=", "");
+            input = input.replace("%20", " ");
+
+            console.log(input);
+
+            $('#output').html(input);
+
+        }
+
+        $("#inputform").on('submit', function(e){
+            e.preventDefault();
+            process();
+            $('#userinput').val('');
+        });
+
+
+    </script>
+
+</body>
+</html>
